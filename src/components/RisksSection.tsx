@@ -7,6 +7,7 @@ import {
   type RiskSection,
 } from "../content/risks";
 import { SafetyAnchor } from "./SafetyAnchor";
+import { SectionNav } from "./SectionNav";
 
 const SECTION_TONE: Record<RiskSection["id"], string> = {
   untreated: "border-amber-500/30 bg-amber-50/40",
@@ -39,6 +40,11 @@ export function RisksTabContent() {
           {RISK_INTRO}
         </p>
       </header>
+
+      <SectionNav
+        kicker="Jump to"
+        items={riskSections.map((s) => ({ id: `risk-${s.id}`, label: s.kicker }))}
+      />
 
       {riskSections.map((sec) => (
         <section

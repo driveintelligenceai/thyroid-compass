@@ -163,6 +163,22 @@ export const riskSections: RiskSection[] = [
         ],
       },
       {
+        id: "coexisting-celiac",
+        title: "Co-existing celiac disease — worth ruling out",
+        magnitude:
+          "Celiac disease is 3–5× more common in Hashimoto's patients than the general population. It's also a common reason levothyroxine 'stops working' — damaged intestinal lining absorbs less hormone. Easy to test for and important to find.",
+        whoMostAtRisk:
+          "Anyone with new GI symptoms, anemia, osteoporosis out of proportion to age, or unexplained levothyroxine dose escalation.",
+        whatYouCanDo:
+          "Ask for celiac antibody testing (tissue transglutaminase IgA and total IgA). Test before going gluten-free — it requires gluten in the diet to be accurate.",
+        sources: [
+          {
+            name: "Celiac and autoimmune thyroid prevalence (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4321866/",
+          },
+        ],
+      },
+      {
         id: "autoimmune-clustering",
         title: "Autoimmune disease clustering",
         magnitude:
@@ -193,6 +209,66 @@ export const riskSections: RiskSection[] = [
           {
             name: "Levothyroxine therapy in elderly patients (Frontiers Endo)",
             url: "https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2021.641560/full",
+          },
+        ],
+      },
+      {
+        id: "misdiagnosis",
+        title: "Misdiagnosis as depression, fibromyalgia, or perimenopause",
+        magnitude:
+          "Hypothyroidism is one of the most-commonly-missed diagnoses in women over 50 because its symptoms (fatigue, brain fog, weight gain, low mood, joint aches) overlap perfectly with depression, fibromyalgia, chronic fatigue syndrome, and perimenopausal change. Studies estimate 20–60% of women initially diagnosed with depression in midlife have an underlying thyroid contributor.",
+        whoMostAtRisk:
+          "Women 40–70 whose first label was 'depression' or 'fibromyalgia' before a TSH was ever drawn.",
+        whatYouCanDo:
+          "If you're being treated for any of those without a recent TSH, ask for one. The test is cheap and definitive.",
+        sources: [
+          {
+            name: "Hypothyroidism mimicking depression review (Indian J Psychol Med)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4673806/",
+          },
+          {
+            name: "Thyroid and mood disorder review (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9011962/",
+          },
+        ],
+      },
+      {
+        id: "encephalopathy",
+        title: "Hashimoto's encephalopathy (SREAT) — rare but treatable",
+        magnitude:
+          "Steroid-responsive encephalopathy associated with autoimmune thyroiditis. Presents as confusion, seizures, hallucinations, or stroke-like episodes — often with normal TSH. Rare (~2 per 100,000) but underdiagnosed; ~95% respond to corticosteroids.",
+        whoMostAtRisk:
+          "People with longstanding Hashimoto's who develop unexplained neurologic symptoms.",
+        whatYouCanDo:
+          "If you or a family member ever has sudden confusion, seizures, or stroke-like episodes, make sure thyroid antibody testing is included in the workup. This is the kind of thing where knowing the name matters.",
+        sources: [
+          {
+            name: "Hashimoto's encephalopathy review (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4881828/",
+          },
+          {
+            name: "SREAT clinical features (Brain & Behavior)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6710165/",
+          },
+        ],
+      },
+      {
+        id: "post-covid",
+        title: "Post-viral and post-COVID thyroiditis",
+        magnitude:
+          "SARS-CoV-2 (and earlier coronaviruses) can trigger or unmask autoimmune thyroid disease. Multiple 2022–2025 cohorts show a meaningful rise in new Hashimoto's diagnoses, subacute thyroiditis, and TSH abnormalities post-COVID. Most resolve over months; some don't.",
+        whoMostAtRisk:
+          "Anyone with persistent fatigue or palpitations 3+ months after a viral illness, especially COVID.",
+        whatYouCanDo:
+          "If post-COVID symptoms persist past 12 weeks, ask for TSH, free T4, and TPO antibodies.",
+        sources: [
+          {
+            name: "COVID-19 and autoimmune thyroid (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9395258/",
+          },
+          {
+            name: "Post-COVID thyroid dysfunction cohort (J Endocrinol Invest)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10353945/",
           },
         ],
       },
@@ -255,6 +331,26 @@ export const riskSections: RiskSection[] = [
         ],
       },
       {
+        id: "iodine-deep-dive",
+        title: "Iodine — the deep version of the counterintuitive warning",
+        magnitude:
+          "Iodine deficiency causes goiter and hypothyroidism — that's known. The surprise is that excess iodine in someone with autoimmune-prone thyroid tissue makes things worse via four mechanisms: (1) more reactive oxygen species in thyroid follicular cells, (2) more immunogenic thyroglobulin, (3) higher TPO expression and antibody production, (4) pyroptosis (inflammatory cell death) of thyroid cells. Population studies after universal salt iodization consistently document the rise in Hashimoto's prevalence.",
+        whoMostAtRisk:
+          "Anyone supplementing iodine above ~150 µg/day, anyone using kelp products, and anyone on amiodarone or iodine-containing radiocontrast.",
+        whatYouCanDo:
+          "Aim for the RDA from iodized salt and normal food. Skip kelp, 'iodine loading' protocols, iodine drops, and supplements above ~200 µg. Tell your doctor about radiocontrast exposure if it happens.",
+        sources: [
+          {
+            name: "Luo Y. et al. — excessive iodine and pyroptosis (Frontiers Endo)",
+            url: "https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2019.00778/full",
+          },
+          {
+            name: "Duntas LH — iodine excess as environmental risk (Int J Mol Sci)",
+            url: "https://www.mdpi.com/1422-0067/15/7/12895",
+          },
+        ],
+      },
+      {
         id: "iodine-trap",
         title: "The iodine trap — counterintuitive and important",
         magnitude:
@@ -309,6 +405,42 @@ export const riskSections: RiskSection[] = [
           {
             name: "Cadegiani FA & Kater CE, Adrenal fatigue does not exist (BMC Endocr Disord 2016)",
             url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4997656/",
+          },
+        ],
+      },
+      {
+        id: "selenium-toxicity",
+        title: "Selenium toxicity (selenosis)",
+        magnitude:
+          "Chronic intake above 400 µg/day risks selenosis — brittle hair and nails, garlic-breath, neuropathy, GI upset. The 2007–2008 'Total Body Formula' selenium-overdose outbreak (200× labeled dose) caused widespread hair loss and neuropathy. Even therapeutic ranges have been linked to type 2 diabetes risk in older adults in the SELECT trial.",
+        whoMostAtRisk:
+          "Anyone stacking a selenium supplement on top of a multivitamin and brazil nuts.",
+        whatYouCanDo:
+          "Total intake — food + multi + standalone supplement — should stay at or below 200 µg/day. Read labels.",
+        sources: [
+          {
+            name: "Selenium toxicity outbreak case series (Arch Intern Med)",
+            url: "https://pubmed.ncbi.nlm.nih.gov/20142573/",
+          },
+          {
+            name: "NIH ODS Selenium fact sheet",
+            url: "https://ods.od.nih.gov/factsheets/Selenium-HealthProfessional/",
+          },
+        ],
+      },
+      {
+        id: "vitamin-d-toxicity",
+        title: "Vitamin D toxicity at chronic high doses",
+        magnitude:
+          "Chronic intake above 10,000 IU/day or 25(OH)D levels above 100 ng/mL can cause hypercalcemia, kidney stones, and arrhythmias. Older women on calcium plus high-dose D are most at risk. The VITAL trial follow-up showed kidney-stone risk rises modestly with high-dose D in older adults.",
+        whoMostAtRisk:
+          "Anyone taking >4000 IU/day without 25(OH)D monitoring.",
+        whatYouCanDo:
+          "Test 25(OH)D before and during supplementation; target 40–60 ng/mL, not 'as high as possible.'",
+        sources: [
+          {
+            name: "Vitamin D toxicity review (Mayo Clin Proc)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4250915/",
           },
         ],
       },

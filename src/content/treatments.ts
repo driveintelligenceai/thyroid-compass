@@ -856,4 +856,220 @@ export const treatments: Insight[] = [
       },
     ],
   },
+
+  // ─── 15. N-acetylcysteine (NAC) ───────────────────────────────────
+  {
+    id: "nac",
+    category: "nutrition",
+    title:
+      "N-acetylcysteine (NAC) — an antioxidant being studied as an adjunct in autoimmune thyroid disease.",
+    subtitle: "Adjunct · cheap, generally well tolerated, evidence still emerging",
+    whyItMatters:
+      "NAC restores glutathione (the body's main antioxidant) and a few recent small trials show it modestly lowers TPO antibody levels in Hashimoto's. Mechanism is plausible; evidence base is thinner than selenium's.",
+    whatItIs:
+      "A precursor to the antioxidant glutathione, used for decades in medicine (acetaminophen overdose, COPD, mucus thinning). Off-label for autoimmune support.",
+    goodFor: [
+      "Adjunct in patients already on stable thyroid hormone",
+      "Inexpensive and widely available",
+      "Generally well-tolerated short term",
+    ],
+    watchFor: [
+      "Evidence still small and short-duration — broader replication needed",
+      "Mild GI upset is the most common side effect",
+      "Sulfur smell can be off-putting",
+    ],
+    age65Note:
+      "Reasonable to discuss as an adjunct. Not a substitute for replacement hormone. Tell your doctor about it before adding — particularly if you're on blood thinners or nitroglycerin.",
+    status: "less_common",
+    evidence: "limited",
+    sources: [
+      {
+        name: "NAC antioxidant effects in thyroid disease (PMC)",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8533703/",
+      },
+      {
+        name: "NIH ODS background on glutathione/NAC",
+        url: "https://ods.od.nih.gov/factsheets/list-all/",
+      },
+    ],
+    lastChecked: LAST_CHECKED,
+    actions: [
+      {
+        id: "nac-discuss",
+        label: "Whether NAC is a reasonable adjunct given your medication list",
+        type: "discuss",
+        prompt: promptA3ActionToQuestions(
+          "talking about whether N-acetylcysteine is a reasonable adjunct for me given the other medications I take, and what the actual evidence base is"
+        ),
+      },
+      {
+        id: "nac-save",
+        label: "Save to compare",
+        type: "save_compare",
+        prompt: promptA1ExplainOption("N-acetylcysteine for Hashimoto's"),
+      },
+    ],
+  },
+
+  // ─── 16. Evening / split-dose levothyroxine ──────────────────────
+  {
+    id: "evening-dosing",
+    category: "treatment",
+    title:
+      "Evening dosing of levothyroxine — a small-trial alternative if morning timing is hard.",
+    subtitle: "Same drug, different schedule · studied in randomized trials",
+    whyItMatters:
+      "Multiple small RCTs (Bolk 2010, Rajput 2011) show that taking levothyroxine at bedtime can actually produce slightly lower TSH than morning dosing — likely because there are fewer competing foods/drinks at night. A real option for people whose mornings make consistent empty-stomach dosing impossible.",
+    whatItIs:
+      "Same levothyroxine, taken at bedtime (≥3 hours after the last meal) instead of in the morning. No new drug, just a schedule change discussed with your doctor.",
+    goodFor: [
+      "Anyone who can't reliably do morning empty-stomach + 30–60 min wait",
+      "People on morning calcium, iron, or PPIs that interfere with absorption",
+      "Patients with unstable TSH on morning dosing",
+    ],
+    watchFor: [
+      "Skip if you eat or take supplements within 3 hours of bedtime",
+      "Switching timing should be discussed first; TSH should be rechecked 6–8 weeks later",
+      "Same over-replacement cautions as standard dosing",
+    ],
+    age65Note:
+      "Particularly worth considering if your mornings include coffee, calcium, iron, or breakfast medications. Easier to maintain in your 60s than the strict 30–60 minute morning window.",
+    status: "common_alt",
+    evidence: "some",
+    sources: [
+      {
+        name: "Bolk 2010 RCT — Bedtime vs morning dosing (Arch Intern Med)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/21149743/",
+      },
+      {
+        name: "Rajput 2011 RCT — Evening levothyroxine (Endocr Pract)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/21134877/",
+      },
+    ],
+    lastChecked: LAST_CHECKED,
+    actions: [
+      {
+        id: "evening-discuss",
+        label: "Whether switching to bedtime dosing might give you steadier numbers",
+        type: "discuss",
+        prompt: promptA3ActionToQuestions(
+          "talking about whether switching from morning to bedtime levothyroxine dosing might give me more stable TSH given my morning routine"
+        ),
+      },
+      {
+        id: "evening-save",
+        label: "Save to compare",
+        type: "save_compare",
+        prompt: promptA1ExplainOption("Evening / bedtime levothyroxine dosing"),
+      },
+    ],
+  },
+
+  // ─── 17. Omega-3 (EPA/DHA) ────────────────────────────────────────
+  {
+    id: "omega3",
+    category: "nutrition",
+    title:
+      "Omega-3 (EPA / DHA) — modest anti-inflammatory adjunct with strong heart-health evidence.",
+    subtitle: "Adjunct · studies have used 1–2 g EPA+DHA daily",
+    whyItMatters:
+      "Hashimoto's patients consistently have higher inflammatory markers (CRP, IL-6). Omega-3 lowers those markers across many conditions and has the strongest cardiovascular evidence in postmenopausal women — a relevant double-benefit at your age.",
+    whatItIs:
+      "The long-chain omega-3 fatty acids EPA and DHA, from oily fish (salmon, sardines, anchovies, mackerel) or supplements. Modulate inflammation through prostaglandin pathways.",
+    goodFor: [
+      "Anti-inflammatory adjunct alongside replacement",
+      "Strong evidence for cardiovascular benefit after menopause",
+      "May modestly support mood and cognition",
+    ],
+    watchFor: [
+      "Higher doses can thin the blood — caution if on warfarin, apixaban, or aspirin",
+      "Look for third-party-tested products to avoid mercury / oxidation",
+      "Fishy aftertaste / belching common; refrigeration helps",
+    ],
+    age65Note:
+      "One of the few supplements with strong evidence at your specific life stage. Fish 2–3×/week is the food-first version. Discuss supplement dose if you're on any anticoagulant.",
+    status: "common_alt",
+    evidence: "some",
+    sources: [
+      {
+        name: "Omega-3 fatty acids in autoimmune disease review (PMC)",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6266360/",
+      },
+      {
+        name: "REDUCE-IT cardiovascular outcomes (NEJM)",
+        url: "https://www.nejm.org/doi/full/10.1056/NEJMoa1812792",
+      },
+    ],
+    lastChecked: LAST_CHECKED,
+    actions: [
+      {
+        id: "o3-discuss",
+        label: "Whether omega-3 fits your medication list and lipid profile",
+        type: "discuss",
+        prompt: promptA3ActionToQuestions(
+          "talking about whether adding omega-3 (EPA + DHA) makes sense given my current medications and lipid panel"
+        ),
+      },
+      {
+        id: "o3-save",
+        label: "Save to compare",
+        type: "save_compare",
+        prompt: promptA1ExplainOption("Omega-3 (EPA / DHA) for Hashimoto's"),
+      },
+    ],
+  },
+
+  // ─── 18. Adthyza (specifically) ────────────────────────────────────
+  {
+    id: "adthyza",
+    category: "treatment",
+    title:
+      "Adthyza — a newer desiccated thyroid formulation without lactose, corn, dye, or latex.",
+    subtitle: "NDT, but cleaner-label · approved for U.S. distribution",
+    whyItMatters:
+      "Many patients who want NDT have sensitivities to the fillers in Armour or NP Thyroid (lactose, corn). Adthyza is the cleanest-label NDT currently available in the U.S. — same Aug 2025 FDA concerns about DTE potency variability apply, but the excipient profile is friendlier.",
+    whatItIs:
+      "Desiccated porcine thyroid in a formulation free of lactose, corn, gluten, dyes, and latex. Same T4 + T3 content goal as other NDT products.",
+    goodFor: [
+      "NDT-curious patients with sensitivities to standard NDT fillers",
+      "People who've reacted to Armour or NP Thyroid in the past",
+      "Cleaner-label option in the NDT class",
+    ],
+    watchFor: [
+      "Same Aug 2025 FDA enforcement / potency concerns as other DTE products",
+      "Same T3-related heart and bone cautions as other NDT",
+      "Newer to market — less long-term real-world data than Armour",
+    ],
+    age65Note:
+      "Same age-related cautions as other T3-containing options. If your interest in NDT is driven by sensitivities to fillers, Adthyza is worth knowing about.",
+    status: "less_common",
+    evidence: "limited",
+    sources: [
+      {
+        name: "Adthyza prescribing information (drugs.com)",
+        url: "https://www.drugs.com/mtm/adthyza.html",
+      },
+      {
+        name: "ATA statement on desiccated thyroid extract",
+        url: "https://www.thyroid.org/ata-statement-desiccated-thyroid-extract/",
+      },
+    ],
+    lastChecked: LAST_CHECKED,
+    actions: [
+      {
+        id: "adthyza-discuss",
+        label: "Whether Adthyza's filler-free profile matters for you",
+        type: "discuss",
+        prompt: promptA3ActionToQuestions(
+          "talking about whether Adthyza's cleaner-label profile matters for me given my sensitivities or other medications, in the context of the Aug 2025 FDA concerns"
+        ),
+      },
+      {
+        id: "adthyza-save",
+        label: "Save to compare",
+        type: "save_compare",
+        prompt: promptA1ExplainOption("Adthyza (lactose-, corn-, dye-, latex-free NDT)"),
+      },
+    ],
+  },
 ];

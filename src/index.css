@@ -93,3 +93,78 @@ body {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Focus rings — visible without being ugly. */
+:focus-visible {
+  outline: 2px solid var(--color-terracotta-500);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Skip-link target. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: var(--color-terracotta-500);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 12px;
+}
+
+/* Print styles — clean for bringing to an appointment. */
+@media print {
+  /* Hide interactive chrome */
+  header,
+  nav,
+  button,
+  .no-print,
+  [role="tablist"] {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #1a1410 !important;
+    font-size: 11pt;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  article,
+  section {
+    page-break-inside: avoid;
+    background: white !important;
+    border-color: #d4cfc7 !important;
+    box-shadow: none !important;
+  }
+
+  h1, h2, h3, h4 {
+    page-break-after: avoid;
+  }
+
+  a {
+    color: #1a1410 !important;
+    text-decoration: underline;
+  }
+
+  /* Show source URLs after links when printed */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #6b5d4e;
+  }
+
+  /* Force expanded states for printing */
+  [aria-expanded="false"] + * {
+    display: block !important;
+  }
+}

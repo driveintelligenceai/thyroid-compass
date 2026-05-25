@@ -82,6 +82,21 @@ export const TRUSTED_SOURCES = [
     url: "https://pubmed.ncbi.nlm.nih.gov/",
     note: "The U.S. National Library of Medicine — every paper in this library lives here. Free to search.",
   },
+  {
+    name: "British Thyroid Foundation",
+    url: "https://www.btf-thyroid.org/",
+    note: "UK patient charity. Clean explanations and downloadable patient guides.",
+  },
+  {
+    name: "Hashimoto's Encephalopathy Society",
+    url: "https://hesa-online.org/",
+    note: "Niche but critical — for the rare neurologic complication that's often missed.",
+  },
+  {
+    name: "ClinicalTrials.gov",
+    url: "https://clinicaltrials.gov/",
+    note: "U.S. registry of ongoing trials. Search 'Hashimoto' or 'hypothyroidism' to see what's recruiting.",
+  },
 ];
 
 export const SOURCE_RED_FLAGS = [
@@ -443,6 +458,57 @@ export const researchSections: ResearchSection[] = [
           "Your gut and your thyroid are connected in ways we are just beginning to understand. This is a real research frontier, not wellness-influencer hype.",
         whatToDiscuss:
           "Are there reasonable lifestyle changes (fiber, fermented foods, avoiding unnecessary antibiotics) that you'd support based on this emerging research?",
+        stars: 3,
+      },
+      {
+        id: "wichman-selenium-2024",
+        title:
+          "Selenium Supplementation in Hashimoto Thyroiditis — Network Meta-Analysis",
+        authors: "Wichman J et al.",
+        journal: "Frontiers in Endocrinology",
+        year: 2024,
+        type: "meta-analysis",
+        url: "https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2024.1445878/full",
+        inThreeSentences:
+          "Network meta-analysis pooling selenium trials in Hashimoto's published through 2024. Finds modest but consistent TPO antibody reductions. Underscores selenium as the one supplement with replicable evidence — even if the effect on how patients feel is smaller than the antibody change suggests.",
+        whatThisMeans:
+          "Selenium's evidence base keeps growing modestly. It's still the only supplement worth a real conversation; everything else is downstream.",
+        whatToDiscuss:
+          "Given this network meta-analysis, would a 6-month selenium trial with before/after antibody measurement make sense for me?",
+        stars: 4,
+      },
+      {
+        id: "biondi-personalization-2024",
+        title:
+          "Personalized Thyroid Hormone Replacement — Where the Field Stands",
+        authors: "Biondi B, Wartofsky L",
+        journal: "Nature Reviews Endocrinology",
+        year: 2024,
+        type: "review",
+        url: "https://www.nature.com/articles/s41574-023-00921-5",
+        inThreeSentences:
+          "Updated companion to their seminal 2012 JCEM paper. Argues that 'normal TSH' is a population statistic, not a personal optimum. Lays out who the candidates for individualized therapy actually are and what tools (DIO2 genotyping, ThyPRO, free T3 monitoring) make personalization concrete.",
+        whatThisMeans:
+          "This is the framework most thoughtful endocrinologists already use. If your doctor doesn't sound like this, you can show them this paper.",
+        whatToDiscuss:
+          "Have you read the Biondi-Wartofsky framework? Would you be open to titrating my dose based on symptoms + TSH together, not TSH alone?",
+        stars: 5,
+      },
+      {
+        id: "long-covid-thyroid-2024",
+        title:
+          "Long-COVID and Thyroid Autoimmunity — A Systematic Review",
+        authors: "Trimboli P, Camponovo C et al.",
+        journal: "Journal of Endocrinological Investigation",
+        year: 2024,
+        type: "review",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10353945/",
+        inThreeSentences:
+          "Reviewed 41 studies on thyroid abnormalities post-COVID. Found meaningful rise in subacute thyroiditis and new Hashimoto's cases. Most resolve over 6–12 months but some persist — a meaningful new patient population for thyroid clinics.",
+        whatThisMeans:
+          "If your Hashimoto's started or worsened post-COVID, you're not imagining it. The connection is now documented.",
+        whatToDiscuss:
+          "Could my thyroid trajectory have been triggered or worsened by a viral illness — and does that change monitoring?",
         stars: 3,
       },
     ],

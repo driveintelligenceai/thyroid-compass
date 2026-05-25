@@ -306,6 +306,99 @@ export const lifestyleSections: LifestyleSection[] = [
         ],
       },
       {
+        id: "omega3-lifestyle",
+        title: "Omega-3 (EPA / DHA)",
+        evidence: "moderate",
+        mechanism:
+          "Modulates inflammation through prostaglandin and resolvin pathways. Hashimoto's patients have higher inflammatory markers — omega-3 lowers them across many conditions.",
+        whatTheEvidenceShows:
+          "Strong cardiovascular outcome evidence (REDUCE-IT). Modest anti-inflammatory effect in autoimmune disease. Limited but plausible benefit on thyroid-specific markers.",
+        studiedDose: "1–2 g EPA + DHA daily; fish 2–3×/week is the food-first version",
+        age65Note:
+          "Double benefit at your age: heart health AND inflammation. Caution if on blood thinners; ask your doctor first.",
+        sources: [
+          {
+            name: "Omega-3 in autoimmune disease review (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6266360/",
+          },
+          {
+            name: "REDUCE-IT (NEJM)",
+            url: "https://www.nejm.org/doi/full/10.1056/NEJMoa1812792",
+          },
+        ],
+      },
+      {
+        id: "curcumin",
+        title: "Curcumin",
+        evidence: "weak",
+        mechanism:
+          "Polyphenol from turmeric. Anti-inflammatory (NF-κB inhibition). Theoretically lowers autoimmune drive.",
+        whatTheEvidenceShows:
+          "Strong inflammation evidence in general, but Hashimoto's-specific trials are small. May reduce TPO antibodies modestly. Absorption is poor without piperine or lipid carriers.",
+        studiedDose: "500–1000 mg/day of bioavailable curcumin (with piperine or phytosome)",
+        age65Note:
+          "Mild blood-thinning effect — caution with anticoagulants. Mostly safe; skip if you have gallstones.",
+        sources: [
+          {
+            name: "Curcumin and autoimmunity review (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6770259/",
+          },
+        ],
+      },
+      {
+        id: "ashwagandha",
+        title: "Ashwagandha — be careful here",
+        evidence: "weak",
+        mechanism:
+          "Adaptogen herb. Several small trials show it slightly raises T4 and T3 levels — which is a feature for hypothyroid patients but a real risk if your dose is already at the upper limit.",
+        whatTheEvidenceShows:
+          "Sharma 2018 (50 patients, subclinical hypothyroid) showed TSH dropped and free T4/T3 rose. Small studies, short duration. Can interact with thyroid medication — your dose may need adjusting.",
+        age65Note:
+          "Not a casual supplement at your age. If you take any thyroid medication, ashwagandha can push you toward over-replacement — discuss explicitly with your doctor before starting.",
+        sources: [
+          {
+            name: "Sharma 2018 ashwagandha in subclinical hypothyroidism (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5871210/",
+          },
+        ],
+      },
+      {
+        id: "l-carnitine",
+        title: "L-carnitine",
+        evidence: "weak",
+        mechanism:
+          "Amino-acid derivative involved in mitochondrial fatty-acid transport. Theoretically opposes the metabolic effects of excess thyroid hormone.",
+        whatTheEvidenceShows:
+          "Some interest for hyperthyroid symptoms; very limited evidence in hypothyroid Hashimoto's. A 2020 review noted possible benefit for fatigue but called for larger trials.",
+        studiedDose: "1–2 g/day; food sources are red meat and dairy",
+        age65Note:
+          "Skip unless your doctor specifically recommends it. Not a priority adjunct.",
+        sources: [
+          {
+            name: "L-carnitine and thyroid review (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4938231/",
+          },
+        ],
+      },
+      {
+        id: "n-acetylcysteine",
+        title: "N-acetylcysteine (NAC)",
+        evidence: "weak",
+        mechanism:
+          "Restores glutathione, the body's main antioxidant. May reduce oxidative damage to thyroid tissue.",
+        whatTheEvidenceShows:
+          "Small recent trials show modest TPO antibody reduction. Evidence base thinner than selenium's. Inexpensive and generally well tolerated.",
+        studiedDose: "600–1200 mg/day",
+        age65Note:
+          "Reasonable adjunct in some cases. Caution if on nitroglycerin or anticoagulants.",
+        sources: [
+          {
+            name: "NAC antioxidant effects in thyroid disease (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8533703/",
+          },
+        ],
+      },
+      {
         id: "skip-tyrosine",
         title: "Skip L-tyrosine",
         evidence: "anecdotal",
@@ -329,6 +422,44 @@ export const lifestyleSections: LifestyleSection[] = [
     framing:
       "These are not soft. They are the interventions with the largest published effect sizes on how you actually feel — and the lowest downside.",
     items: [
+      {
+        id: "mental-health",
+        title: "Mental health is thyroid health",
+        evidence: "strong",
+        mechanism:
+          "Depression, anxiety, and brain fog are core hypothyroid symptoms because thyroid hormone directly affects serotonin synthesis, dopamine receptors, and neuronal energy.",
+        whatTheEvidenceShows:
+          "Up to 60% of hypothyroid patients meet criteria for depression at some point. Treating the thyroid often improves mood, but the reverse is also true — untreated depression makes thyroid symptoms feel worse.",
+        age65Note:
+          "If you're being treated for depression and haven't had a recent TSH, ask for one. If your TSH is normal and you still feel low, both deserve attention. They reinforce each other.",
+        sources: [
+          {
+            name: "Thyroid and mood disorder review (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9011962/",
+          },
+          {
+            name: "Hypothyroidism mimicking depression (Indian J Psychol Med)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4673806/",
+          },
+        ],
+      },
+      {
+        id: "sleep-apnea",
+        title: "Screen for sleep apnea — it's overrepresented in Hashimoto's",
+        evidence: "moderate",
+        mechanism:
+          "Hypothyroidism increases sleep apnea risk through myxedematous upper-airway tissue changes, reduced respiratory drive, and weight gain. Apnea, in turn, worsens fatigue and cardiovascular risk.",
+        whatTheEvidenceShows:
+          "Multiple cross-sectional studies show ~30–50% sleep apnea prevalence in hypothyroid patients vs ~10% in matched controls. Treatment of apnea improves daytime fatigue independent of TSH.",
+        age65Note:
+          "If your partner reports loud snoring or you wake unrefreshed, ask for a home sleep study. It's one of the highest-yield single tests at your age.",
+        sources: [
+          {
+            name: "Sleep apnea and hypothyroidism (PMC)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7212333/",
+          },
+        ],
+      },
       {
         id: "exercise",
         title: "Exercise — walk every day, lift twice a week",
@@ -440,6 +571,41 @@ export const lifestyleSections: LifestyleSection[] = [
           {
             name: "Laukkanen sauna review (PubMed)",
             url: "https://pubmed.ncbi.nlm.nih.gov/29371920/",
+          },
+        ],
+      },
+      {
+        id: "time-restricted-eating",
+        title: "Time-restricted eating (intermittent fasting)",
+        evidence: "weak",
+        mechanism:
+          "Eating in a 10-hour window may improve metabolic markers and reduce inflammation. Direct thyroid evidence is limited.",
+        whatTheEvidenceShows:
+          "Strong general-metabolic evidence in midlife adults; modest evidence in subclinical hypothyroidism. Caveat: prolonged fasting (>24h) can transiently lower T3.",
+        age65Note:
+          "Keep it gentle. A 10-hour eating window (e.g., 9am–7pm) is more sensible than 16:8 fasting at your age — sarcopenia and bone density mean you don't want long protein-free stretches.",
+        sources: [
+          {
+            name: "Time-restricted eating midlife review (Cell Metab)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8754590/",
+          },
+        ],
+      },
+      {
+        id: "morning-light",
+        title: "Morning bright light",
+        evidence: "moderate",
+        mechanism:
+          "Bright light early in the day stabilizes circadian rhythm, which directly modulates TSH and sleep quality.",
+        whatTheEvidenceShows:
+          "Strong evidence for mood, sleep, and circadian regulation. Indirect benefit for thyroid via sleep/cortisol.",
+        studiedDose: "10–30 minutes outdoor light within 1–2 hours of waking",
+        age65Note:
+          "One of the simplest, lowest-cost daily practices with broad benefits. Morning walks count.",
+        sources: [
+          {
+            name: "Bright light therapy review (Sleep Med Rev)",
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7491497/",
           },
         ],
       },

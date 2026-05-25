@@ -7,6 +7,7 @@ import {
   type ResearchCard as Card,
 } from "../content/library";
 import { SafetyAnchor } from "./SafetyAnchor";
+import { SectionNav } from "./SectionNav";
 
 const TYPE_LABEL: Record<Card["type"], string> = {
   guideline: "Clinical guideline",
@@ -52,6 +53,11 @@ export function LibraryTabContent() {
           {LIBRARY_INTRO}
         </p>
       </header>
+
+      <SectionNav
+        kicker="Jump to"
+        items={researchSections.map((s) => ({ id: `lib-${s.id}`, label: s.kicker }))}
+      />
 
       <section
         aria-labelledby="how-to-read"

@@ -43,8 +43,18 @@ export function Header({
         <nav className="flex items-center gap-2 self-end md:self-auto">
           <button
             type="button"
+            onClick={() => window.print()}
+            aria-label="Print this section"
+            title="Print this section to bring to your appointment"
+            className="relative inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2 md:px-4 no-print"
+          >
+            <span aria-hidden="true">🖨️</span>
+            <span className="hidden sm:inline">Print</span>
+          </button>
+          <button
+            type="button"
             onClick={onOpenCompare}
-            className="relative inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2 md:px-4"
+            className="relative inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2 md:px-4 no-print"
           >
             <span aria-hidden="true">⚖️</span>
             <span className="hidden sm:inline">Compare</span>
@@ -62,13 +72,14 @@ export function Header({
   );
 }
 
-export type TabKey = "treatments" | "lifestyle" | "risks" | "library";
+export type TabKey = "treatments" | "lifestyle" | "risks" | "library" | "resources";
 
 const TABS: { key: TabKey; label: string; icon: string; desc: string }[] = [
   { key: "treatments", label: "Treatments", icon: "💊", desc: "Every option, oldest to newest" },
   { key: "lifestyle", label: "Daily Care", icon: "🌿", desc: "Food, sleep, movement, stress" },
   { key: "risks", label: "Risks & Reality", icon: "⚖️", desc: "What's true if you do nothing — or only this" },
   { key: "library", label: "Research Library", icon: "📚", desc: "Peer-reviewed papers, in plain words" },
+  { key: "resources", label: "Pocket Reference", icon: "📖", desc: "Glossary, FAQ, labs, walk-in lists" },
 ];
 
 function TabBar({ active, onChange }: { active: TabKey; onChange: (t: TabKey) => void }) {

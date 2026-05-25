@@ -6,6 +6,9 @@ import { SafetyAnchor } from "./components/SafetyAnchor";
 import { LifestyleTabContent } from "./components/LifestyleSection";
 import { RisksTabContent } from "./components/RisksSection";
 import { LibraryTabContent } from "./components/LibrarySection";
+import { ResourcesTabContent } from "./components/ResourcesSection";
+import { CalmAnchor } from "./components/CalmAnchor";
+import { SafetyNet } from "./components/SafetyNet";
 import { treatments } from "./content/treatments";
 
 const STORAGE_KEY_SAVED = "tc.savedForCompare.v1";
@@ -47,7 +50,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<TabKey>(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY_TAB) as TabKey | null;
-      if (raw === "treatments" || raw === "lifestyle" || raw === "risks" || raw === "library") return raw;
+      if (raw === "treatments" || raw === "lifestyle" || raw === "risks" || raw === "library" || raw === "resources") return raw;
     } catch {
       // ignore
     }
@@ -69,6 +72,9 @@ export default function App() {
 
   return (
     <div id="top" className="mx-auto flex min-h-dvh max-w-6xl flex-col">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       <Header
         savedCount={savedIds.size}
         onOpenCompare={() => setCompareOpen(true)}
@@ -76,7 +82,7 @@ export default function App() {
         onChangeTab={setActiveTab}
       />
 
-      <main className="flex-1 px-5 pb-24 pt-6 md:px-8 md:pt-10">
+      <main id="main-content" tabIndex={-1} className="flex-1 px-5 pb-24 pt-6 md:px-8 md:pt-10">
         {activeTab === "treatments" && (
           <TreatmentsTab
             saved={savedIds}
@@ -86,8 +92,10 @@ export default function App() {
         {activeTab === "lifestyle" && <LifestyleTab />}
         {activeTab === "risks" && <RisksTab />}
         {activeTab === "library" && <LibraryTab />}
+        {activeTab === "resources" && <ResourcesTab />}
 
-        <section className="mt-16">
+        <section className="mt-12 space-y-6">
+          <SafetyNet />
           <SafetyAnchor />
         </section>
       </main>
@@ -115,6 +123,9 @@ function TreatmentsTab({
   return (
     <>
       <Hero />
+      <section className="mt-10">
+        <CalmAnchor />
+      </section>
       <section aria-labelledby="explorer-heading" className="mt-10 md:mt-14">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
@@ -166,6 +177,10 @@ function RisksTab() {
 
 function LibraryTab() {
   return <LibraryTabContent />;
+}
+
+function ResourcesTab() {
+  return <ResourcesTabContent />;
 }
 
 function Hero() {

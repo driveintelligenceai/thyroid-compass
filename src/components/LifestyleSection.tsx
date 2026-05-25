@@ -7,6 +7,7 @@ import {
   type LifestyleItem,
 } from "../content/lifestyle";
 import { SafetyAnchor } from "./SafetyAnchor";
+import { SectionNav } from "./SectionNav";
 
 const EVIDENCE_LABEL: Record<Evidence, string> = {
   strong: "Strong evidence",
@@ -39,6 +40,11 @@ export function LifestyleTabContent() {
           {LIFESTYLE_INTRO}
         </p>
       </header>
+
+      <SectionNav
+        kicker="Jump to"
+        items={lifestyleSections.map((s) => ({ id: `life-${s.id}`, label: s.title.split("—")[0].trim() }))}
+      />
 
       <section
         aria-labelledby="quick-card"
