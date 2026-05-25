@@ -3,14 +3,24 @@ export function Header({
   onOpenCompare,
   activeTab,
   onChangeTab,
+  largerType,
+  onToggleLargerType,
+  calmMode,
+  onToggleCalmMode,
 }: {
   savedCount: number;
   onOpenCompare: () => void;
   activeTab: TabKey;
   onChangeTab: (tab: TabKey) => void;
+  largerType: boolean;
+  onToggleLargerType: () => void;
+  calmMode: boolean;
+  onToggleCalmMode: () => void;
 }) {
+  const active = TABS.find((t) => t.key === activeTab);
+
   return (
-    <header className="sticky top-0 z-30 border-b border-line/70 bg-parchment/85 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-line/70 bg-parchment/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-3 md:flex-row md:items-center md:justify-between md:gap-4 md:px-8 md:py-4">
         <a
           href="#top"
@@ -34,19 +44,40 @@ export function Header({
             >
               Thyroid Compass
             </p>
-            <p className="text-xs text-ink-muted md:text-sm">
-              A calm guide to your options. Educational only.
+            <p className="text-xs text-ink-muted md:text-sm calm-hide">
+              A calm guide. Educational only.
             </p>
           </div>
         </a>
 
-        <nav className="flex items-center gap-2 self-end md:self-auto">
+        <nav className="flex flex-wrap items-center gap-2 self-end md:self-auto no-print">
+          <button
+            type="button"
+            onClick={onToggleLargerType}
+            aria-pressed={largerType}
+            aria-label={largerType ? "Switch to normal text size" : "Switch to larger text size"}
+            title="Larger text"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2"
+          >
+            <span aria-hidden="true">{largerType ? "A−" : "A+"}</span>
+            <span className="hidden sm:inline">{largerType ? "Normal" : "Larger"}</span>
+          </button>
+          <button
+            type="button"
+            onClick={onToggleCalmMode}
+            aria-pressed={calmMode}
+            title="Calm mode — hide extra chrome"
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold ring-1 ${calmMode ? "bg-sage-500 text-white ring-sage-500" : "bg-white text-ink ring-line hover:bg-parchment-2"}`}
+          >
+            <span aria-hidden="true">🌿</span>
+            <span className="hidden sm:inline">{calmMode ? "Calm on" : "Calm"}</span>
+          </button>
           <button
             type="button"
             onClick={() => window.print()}
             aria-label="Print this section"
-            title="Print this section to bring to your appointment"
-            className="relative inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2 md:px-4 no-print"
+            title="Print this section"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2"
           >
             <span aria-hidden="true">🖨️</span>
             <span className="hidden sm:inline">Print</span>
@@ -54,7 +85,7 @@ export function Header({
           <button
             type="button"
             onClick={onOpenCompare}
-            className="relative inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2 md:px-4 no-print"
+            className="relative inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-sm font-semibold text-ink ring-1 ring-line hover:bg-parchment-2"
           >
             <span aria-hidden="true">⚖️</span>
             <span className="hidden sm:inline">Compare</span>
@@ -68,6 +99,15 @@ export function Header({
       </div>
 
       <TabBar active={activeTab} onChange={onChangeTab} />
+
+      {active && (
+        <div className="border-t border-line/40 bg-parchment-2/30 calm-hide">
+          <p className="mx-auto max-w-6xl px-5 py-2 text-xs text-ink-muted md:px-8">
+            <span className="font-semibold text-ink-soft">{active.label}: </span>
+            {active.desc}
+          </p>
+        </div>
+      )}
     </header>
   );
 }

@@ -8,9 +8,9 @@ const ICON: Record<InsightAction["type"], string> = {
 };
 
 const PREFIX: Record<InsightAction["type"], string> = {
-  discuss: "Worth discussing:",
-  try_note: "Try / note:",
-  save_compare: "Save / compare:",
+  discuss: "Worth asking about",
+  try_note: "Something to try",
+  save_compare: "Save this one",
 };
 
 const TINT: Record<InsightAction["type"], string> = {

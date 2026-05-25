@@ -57,9 +57,11 @@ export function CompareDrawer({
         <div className="overflow-x-auto overflow-y-auto px-5 py-6 md:px-7">
           {selected.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-line bg-white/60 p-10 text-center">
-              <p className="text-lg text-ink-soft">Nothing saved yet.</p>
-              <p className="mt-2 text-sm text-ink-muted">
-                Browse the gallery and tap "☆ Save for compare" on the cards you want to weigh side by side.
+              <p className="text-2xl text-ink">Nothing here yet — and that's fine.</p>
+              <p className="prose-comfort mx-auto mt-3 text-base text-ink-soft">
+                When you find treatments you want to look at side-by-side, tap the
+                "☆ Save this one" button on those cards. They'll all come here so you can
+                compare them in one calm view.
               </p>
             </div>
           ) : (

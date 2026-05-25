@@ -2,7 +2,6 @@ import { useState } from "react";
 import type { Insight } from "../types";
 import { ActionChip } from "./ActionChip";
 import { EvidenceMeter, StatusBadgePill } from "./StatusBadge";
-import { SafetyAnchor } from "./SafetyAnchor";
 
 /**
  * The Insight → Action → Explore card (PRD §6).
@@ -44,10 +43,14 @@ export function InsightCard({
         {insight.subtitle && (
           <p className="text-sm text-ink-muted md:text-base">{insight.subtitle}</p>
         )}
-        <p className="text-[1.05rem] leading-relaxed text-ink-soft md:text-[1.1rem]">
-          <span className="font-semibold text-ink">Why it matters: </span>
-          {insight.whyItMatters}
-        </p>
+        <div className="rounded-2xl border-l-4 border-terracotta-500 bg-terracotta-50/40 px-4 py-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-terracotta-700">
+            Why this matters
+          </p>
+          <p className="mt-1 text-[1.05rem] leading-relaxed text-ink md:text-[1.1rem]">
+            {insight.whyItMatters}
+          </p>
+        </div>
       </header>
 
       {/* 60s lens — persistent, on every card. */}
@@ -151,7 +154,7 @@ export function InsightCard({
           className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-ink-muted hover:text-ink"
         >
           <span aria-hidden="true">ⓘ</span>
-          Sources {sourcesOpen ? "▴" : "▾"}
+          Where this comes from {sourcesOpen ? "▴" : "▾"}
           <span className="font-normal normal-case text-ink-muted/80">
             · last checked {insight.lastChecked}
           </span>
@@ -172,8 +175,6 @@ export function InsightCard({
           </ul>
         )}
       </div>
-
-      <SafetyAnchor />
     </article>
   );
 }

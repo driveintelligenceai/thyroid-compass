@@ -26,14 +26,15 @@ const THREE_THINGS = [
 export function CalmAnchor() {
   return (
     <section
-      aria-labelledby="calm-anchor"
-      className="rounded-[var(--radius-card)] border border-sage-500/30 bg-sage-50/50 p-6 shadow-[var(--shadow-card)] md:p-7"
+      id="calm-anchor"
+      aria-labelledby="calm-anchor-heading"
+      className="scroll-mt-32 rounded-[var(--radius-card)] border border-sage-500/30 bg-sage-50/50 p-6 shadow-[var(--shadow-card)] md:p-7"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-700">
         If this dashboard overwhelms you
       </p>
       <h3
-        id="calm-anchor"
+        id="calm-anchor-heading"
         className="mt-1 font-display text-xl text-ink md:text-2xl"
         style={{ fontFamily: "var(--font-display)" }}
       >

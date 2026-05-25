@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Header, type TabKey } from "./components/Header";
 import { InsightCard } from "./components/InsightCard";
 import { CompareDrawer } from "./components/CompareDrawer";
@@ -9,10 +9,13 @@ import { LibraryTabContent } from "./components/LibrarySection";
 import { ResourcesTabContent } from "./components/ResourcesSection";
 import { CalmAnchor } from "./components/CalmAnchor";
 import { SafetyNet } from "./components/SafetyNet";
+import { OverwhelmedAnchor } from "./components/OverwhelmedAnchor";
 import { treatments } from "./content/treatments";
 
 const STORAGE_KEY_SAVED = "tc.savedForCompare.v1";
 const STORAGE_KEY_TAB = "tc.activeTab.v1";
+const STORAGE_KEY_LARGER = "tc.largerType.v1";
+const STORAGE_KEY_CALM = "tc.calmMode.v1";
 
 function useLocalSet(key: string): [Set<string>, (id: string) => void] {
   const [set, setSet] = useState<Set<string>>(() => {
@@ -44,9 +47,33 @@ function useLocalSet(key: string): [Set<string>, (id: string) => void] {
   return [set, toggle];
 }
 
+function useLocalBoolean(key: string): [boolean, () => void] {
+  const [value, setValue] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem(key) === "1";
+    } catch {
+      return false;
+    }
+  });
+  const toggle = useCallback(() => {
+    setValue((v) => {
+      const next = !v;
+      try {
+        localStorage.setItem(key, next ? "1" : "0");
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  }, [key]);
+  return [value, toggle];
+}
+
 export default function App() {
   const [savedIds, toggleSaved] = useLocalSet(STORAGE_KEY_SAVED);
   const [compareOpen, setCompareOpen] = useState(false);
+  const [largerType, toggleLargerType] = useLocalBoolean(STORAGE_KEY_LARGER);
+  const [calmMode, toggleCalmMode] = useLocalBoolean(STORAGE_KEY_CALM);
   const [activeTab, setActiveTab] = useState<TabKey>(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY_TAB) as TabKey | null;
@@ -65,6 +92,26 @@ export default function App() {
     }
   }, [activeTab]);
 
+  useEffect(() => {
+    const html = document.documentElement;
+    html.classList.toggle("text-larger", largerType);
+    html.classList.toggle("calm-mode", calmMode);
+  }, [largerType, calmMode]);
+
+  // Scroll position memory per tab (Pass 25)
+  const scrollMemory = useRef<Record<TabKey, number>>({} as Record<TabKey, number>);
+  useEffect(() => {
+    const onScroll = () => {
+      scrollMemory.current[activeTab] = window.scrollY;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [activeTab]);
+  useEffect(() => {
+    const saved = scrollMemory.current[activeTab] ?? 0;
+    window.scrollTo({ top: saved, behavior: "instant" as ScrollBehavior });
+  }, [activeTab]);
+
   const savedInsights = useMemo(
     () => treatments.filter((t) => savedIds.has(t.id)),
     [savedIds]
@@ -80,6 +127,10 @@ export default function App() {
         onOpenCompare={() => setCompareOpen(true)}
         activeTab={activeTab}
         onChangeTab={setActiveTab}
+        largerType={largerType}
+        onToggleLargerType={toggleLargerType}
+        calmMode={calmMode}
+        onToggleCalmMode={toggleCalmMode}
       />
 
       <main id="main-content" tabIndex={-1} className="flex-1 px-5 pb-24 pt-6 md:px-8 md:pt-10">
@@ -95,6 +146,14 @@ export default function App() {
         {activeTab === "resources" && <ResourcesTab />}
 
         <section className="mt-12 space-y-6">
+          <OverwhelmedAnchor
+            onReset={() => {
+              setActiveTab("treatments");
+              setTimeout(() => {
+                document.getElementById("calm-anchor")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }, 50);
+            }}
+          />
           <SafetyNet />
           <SafetyAnchor />
         </section>
@@ -195,32 +254,20 @@ function Hero() {
         For Hashimoto's and hypothyroidism
       </p>
       <h1
-        className="mt-4 font-display text-[2.4rem] leading-[1.05] text-ink md:text-[3.2rem]"
-        style={{ fontFamily: "var(--font-display)" }}
+        className="mt-4 font-display leading-[1.08] text-ink"
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(2rem, 4.5vw + 1rem, 3.2rem)",
+        }}
       >
         Understand your options.
         <br />
-        Walk into your appointment ready.
+        Walk in ready.
       </h1>
-      <p className="mt-5 max-w-2xl text-[1.15rem] leading-relaxed text-ink-soft md:text-[1.2rem]">
-        One simple loop, on every card:{" "}
-        <span className="font-semibold text-ink">an insight</span> →{" "}
-        <span className="font-semibold text-ink">an action you can take</span> → (when you
-        have a question) <span className="font-semibold text-ink">a prompt to copy into ChatGPT</span>.
-        No accounts to set up. No AI inside the app. Just a calm starting point you can read
-        in ten seconds and tap into when you want more.
+      <p className="prose-comfort mt-5 text-[1.1rem] leading-relaxed text-ink-soft md:text-[1.15rem]">
+        A calm guide for Hashimoto's. Read what you want, skip what you don't.
+        Print anything to bring to your doctor.
       </p>
-      <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-ink-soft">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 ring-1 ring-line">
-          <span aria-hidden="true">👵</span> 60s lens on every card
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 ring-1 ring-line">
-          <span aria-hidden="true">⚖️</span> Side-by-side compare
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 ring-1 ring-line">
-          <span aria-hidden="true">📚</span> Peer-reviewed sources on every card
-        </span>
-      </div>
     </section>
   );
 }

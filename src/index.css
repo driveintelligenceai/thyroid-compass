@@ -53,15 +53,73 @@ html {
   background: var(--color-parchment);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-size: 17px;
+  font-size: 18px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 18px;
+    font-size: 19px;
   }
+}
+
+/* Larger-type mode — toggled from header */
+html.text-larger {
+  font-size: 21px;
+}
+@media (min-width: 768px) {
+  html.text-larger {
+    font-size: 22px;
+  }
+}
+
+/* Calm mode — hides supplemental chrome and softens contrast */
+html.calm-mode .calm-hide {
+  display: none !important;
+}
+html.calm-mode {
+  background: #fcf7ee;
+}
+html.calm-mode body {
+  background: #fcf7ee;
+}
+
+/* Reading-comfort: max line length on prose blocks */
+.prose-comfort {
+  max-width: 65ch;
+}
+
+/* Minimum touch target — important for older users */
+button, a.btn-touch, [role="tab"] {
+  min-height: 44px;
+}
+
+/* Glossary tooltip — dotted underline that reveals a definition */
+.gloss {
+  border-bottom: 1px dashed var(--color-terracotta-500);
+  cursor: help;
+  position: relative;
+}
+.gloss:hover::after,
+.gloss:focus::after {
+  content: attr(data-def);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: max-content;
+  max-width: 320px;
+  background: var(--color-ink);
+  color: white;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  z-index: 50;
+  box-shadow: 0 8px 24px -8px rgba(0,0,0,0.3);
+  white-space: normal;
 }
 
 body {
