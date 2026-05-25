@@ -50,7 +50,7 @@ export function RisksTabContent() {
         <section
           key={sec.id}
           aria-labelledby={`risk-${sec.id}`}
-          className={`rounded-[var(--radius-card)] border p-6 shadow-[var(--shadow-card)] md:p-8 ${SECTION_TONE[sec.id]}`}
+          className={`rounded-[var(--radius-card)] border p-4 shadow-[var(--shadow-card)] md:p-8 ${SECTION_TONE[sec.id]}`}
         >
           <p
             className={`text-xs font-semibold uppercase tracking-[0.18em] ${KICKER_TONE[sec.id]}`}

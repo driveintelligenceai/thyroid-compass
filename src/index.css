@@ -7,6 +7,11 @@
 ---------------------------------------------------------------------------- */
 
 @theme {
+  /* Custom XS breakpoint — fires on iPhone 13 mini (375px+).
+     iPhone SE 1st gen (320×568) stays in the unprefixed base layer. */
+  --breakpoint-xs: 23.5rem; /* 376px */
+  --breakpoint-iphone-plus: 26.75rem; /* 428px — Plus / Pro Max */
+
   /* Palette — warm parchment, terracotta accent, sage for "good", amber for "watch". */
   --color-parchment: #fdf8f3;
   --color-parchment-2: #f7ede0;
@@ -53,15 +58,41 @@ html {
   background: var(--color-parchment);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* iOS Safari — prevent text auto-sizing on rotate */
+  -webkit-text-size-adjust: 100%;
+  /* Scroll past sticky header when jumping to anchor (calc accounts for safe-area-top + header) */
+  scroll-padding-top: calc(108px + env(safe-area-inset-top));
+  scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+}
 @media (min-width: 768px) {
   html {
     font-size: 19px;
+  }
+}
+
+/* iPhone SE 1st gen tightest case */
+@media (max-width: 374px) {
+  html {
+    font-size: 16px;
+    line-height: 1.55;
+    scroll-padding-top: 100px;
   }
 }
 
@@ -128,6 +159,25 @@ body {
     radial-gradient(900px 500px at -10% 110%, #f3e0c8 0%, transparent 55%),
     var(--color-parchment);
   min-height: 100dvh;
+  /* iOS Safari — prevent rubber-band overscroll past the page */
+  overscroll-behavior-y: contain;
+  /* Use safe-area at the bottom for home-indicator devices */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* iOS — softer tap-highlight (default is bright blue rectangle) */
+* {
+  -webkit-tap-highlight-color: rgba(231, 111, 81, 0.15);
+}
+
+/* Touch devices — use :active for tap feedback instead of relying on :hover sticking. */
+@media (hover: none) and (pointer: coarse) {
+  button:active,
+  a:active,
+  [role="tab"]:active {
+    transform: scale(0.985);
+    transition: transform 50ms ease-out;
+  }
 }
 
 ::selection {

@@ -61,7 +61,7 @@ export function LibraryTabContent() {
 
       <section
         aria-labelledby="how-to-read"
-        className="rounded-[var(--radius-card)] border border-line bg-parchment-2/40 p-6 shadow-[var(--shadow-card)] md:p-8"
+        className="rounded-[var(--radius-card)] border border-line bg-parchment-2/40 p-4 shadow-[var(--shadow-card)] md:p-8"
       >
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted">
           Primer
@@ -110,7 +110,7 @@ export function LibraryTabContent() {
 
       <section
         aria-labelledby="trusted"
-        className="rounded-[var(--radius-card)] border border-sage-500/30 bg-sage-50/50 p-6 shadow-[var(--shadow-card)] md:p-8"
+        className="rounded-[var(--radius-card)] border border-sage-500/30 bg-sage-50/50 p-4 shadow-[var(--shadow-card)] md:p-8"
       >
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-700">
           Where to read more
@@ -162,7 +162,7 @@ export function LibraryTabContent() {
 
 function ResearchCard({ card }: { card: Card }) {
   return (
-    <li className="rounded-[var(--radius-card)] border border-line bg-white/85 p-6 shadow-[var(--shadow-card)] md:p-7">
+    <li className="rounded-[var(--radius-card)] border border-line bg-white/85 p-4 shadow-[var(--shadow-card)] md:p-7">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
           <span

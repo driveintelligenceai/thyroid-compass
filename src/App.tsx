@@ -133,7 +133,15 @@ export default function App() {
         onToggleCalmMode={toggleCalmMode}
       />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 px-5 pb-24 pt-6 md:px-8 md:pt-10">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="flex-1 px-4 pb-16 pt-4 md:px-8 md:pb-24 md:pt-10"
+        style={{
+          paddingLeft: "max(env(safe-area-inset-left), 1rem)",
+          paddingRight: "max(env(safe-area-inset-right), 1rem)",
+        }}
+      >
         {activeTab === "treatments" && (
           <TreatmentsTab
             saved={savedIds}
@@ -193,24 +201,26 @@ function TreatmentsTab({
             </p>
             <h2
               id="explorer-heading"
-              className="mt-1 font-display text-3xl text-ink md:text-4xl"
-              style={{ fontFamily: "var(--font-display)" }}
+              className="mt-1 font-display text-ink"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.5rem, 5vw, 2.25rem)",
+                textWrap: "balance",
+              }}
             >
-              Every option — oldest and most-trusted, to newest and experimental.
+              Every option — oldest to newest.
             </h2>
-            <p className="mt-2 max-w-2xl text-[1.05rem] leading-relaxed text-ink-soft">
-              Each card is one idea: an <strong>insight</strong> about a treatment, the{" "}
-              <strong>actions</strong> you can take next, and — when you have a question — a
-              ready-to-paste ChatGPT <strong>prompt</strong> so you can explore deeper in the
-              tool you already use.
+            <p className="prose-comfort mt-2 text-base leading-relaxed text-ink-soft md:text-[1.05rem]">
+              An <strong>insight</strong>, an <strong>action</strong>, and — when you have a
+              question — a <strong>ChatGPT prompt</strong> to explore deeper. Tap a card to open it.
             </p>
           </div>
         </div>
 
-        <ol className="mt-8 grid gap-6 md:gap-8">
+        <ol className="mt-6 grid gap-5 md:mt-8 md:gap-8">
           {treatments.map((t, idx) => (
             <li key={t.id} className="relative">
-              <div className="absolute -left-2 -top-3 z-10 inline-flex size-9 items-center justify-center rounded-full bg-terracotta-500 font-display text-base font-bold text-white shadow-md md:-left-4 md:size-10 md:text-lg">
+              <div className="absolute -left-1 -top-2.5 z-10 inline-flex size-8 items-center justify-center rounded-full bg-terracotta-500 font-display text-sm font-bold text-white shadow-md md:-left-4 md:-top-3 md:size-10 md:text-lg">
                 {idx + 1}
               </div>
               <InsightCard
@@ -244,7 +254,7 @@ function ResourcesTab() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden rounded-[var(--radius-card)] border border-line bg-white/70 px-6 py-10 shadow-[var(--shadow-card)] md:px-12 md:py-14">
+    <section className="relative overflow-hidden rounded-[var(--radius-card)] border border-line bg-white/70 px-5 py-7 shadow-[var(--shadow-card)] md:px-12 md:py-14">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(600px_300px_at_90%_-20%,_var(--color-terracotta-50),_transparent_60%),radial-gradient(500px_300px_at_-10%_120%,_var(--color-amber-50),_transparent_60%)]"
@@ -254,17 +264,21 @@ function Hero() {
         For Hashimoto's and hypothyroidism
       </p>
       <h1
-        className="mt-4 font-display leading-[1.08] text-ink"
+        className="mt-3 font-display leading-[1.1] text-ink md:mt-4 md:leading-[1.08]"
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(2rem, 4.5vw + 1rem, 3.2rem)",
+          fontSize: "clamp(1.75rem, 7vw + 0.5rem, 3.2rem)",
+          textWrap: "balance",
         }}
       >
         Understand your options.
         <br />
         Walk in ready.
       </h1>
-      <p className="prose-comfort mt-5 text-[1.1rem] leading-relaxed text-ink-soft md:text-[1.15rem]">
+      <p
+        className="prose-comfort mt-4 text-base leading-relaxed text-ink-soft md:mt-5 md:text-[1.15rem]"
+        style={{ textWrap: "pretty" }}
+      >
         A calm guide for Hashimoto's. Read what you want, skip what you don't.
         Print anything to bring to your doctor.
       </p>

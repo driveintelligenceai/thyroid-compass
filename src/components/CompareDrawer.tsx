@@ -17,44 +17,70 @@ export function CompareDrawer({
   onClose: () => void;
   onRemove: (id: string) => void;
 }) {
-  // Close on Escape.
+  // Close on Escape + lock body scroll while open.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-40 flex items-end justify-center bg-ink/40 p-0 backdrop-blur-sm sm:items-center sm:p-6">
+    <div
+      className="fixed inset-0 z-40 flex items-end justify-center bg-ink/40 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+      onClick={(e) => {
+        // Tap on backdrop closes (mobile-friendly)
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div
         role="dialog"
         aria-modal="true"
         aria-label="Side-by-side compare"
-        className="flex max-h-[90dvh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-parchment shadow-2xl sm:rounded-3xl"
+        className="flex w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-parchment shadow-2xl sm:rounded-3xl"
+        style={{
+          maxHeight: "calc(95dvh - env(safe-area-inset-top))",
+          paddingBottom: "env(safe-area-inset-bottom)",
+        }}
       >
-        <header className="flex items-center justify-between gap-4 border-b border-line bg-parchment-2/80 px-5 py-4 md:px-7">
-          <div>
-            <h2 className="font-display text-2xl text-ink" style={{ fontFamily: "var(--font-display)" }}>
-              Side-by-side compare
+        {/* Drag handle indicator (visual only — for mobile bottom-sheet feel) */}
+        <div className="flex justify-center pt-2 sm:hidden">
+          <span aria-hidden="true" className="h-1.5 w-12 rounded-full bg-line" />
+        </div>
+
+        <header className="flex items-center justify-between gap-3 border-b border-line bg-parchment-2/80 px-4 py-3 md:px-7 md:py-4">
+          <div className="min-w-0">
+            <h2 className="truncate font-display text-xl text-ink md:text-2xl" style={{ fontFamily: "var(--font-display)" }}>
+              Compare
             </h2>
-            <p className="mt-0.5 text-sm text-ink-muted">
+            <p className="mt-0.5 text-xs text-ink-muted md:text-sm">
               {selected.length === 0
-                ? "Tap ☆ Save for compare on any card to add it here."
+                ? "Tap ☆ Save on any card to add it here."
                 : `${selected.length} option${selected.length === 1 ? "" : "s"} saved.`}
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink shadow ring-1 ring-line hover:bg-parchment-2"
+            aria-label="Close compare drawer"
+            className="inline-flex shrink-0 items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink shadow ring-1 ring-line hover:bg-parchment-2"
+            style={{ minWidth: "44px", minHeight: "44px" }}
           >
-            Close ✕
+            <span className="hidden md:inline">Close </span>
+            <span aria-hidden="true" className="text-lg">✕</span>
           </button>
         </header>
 
-        <div className="overflow-x-auto overflow-y-auto px-5 py-6 md:px-7">
+        <div
+          className="overflow-x-auto overflow-y-auto px-4 py-5 md:px-7 md:py-6"
+          style={{ WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
+        >
           {selected.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-line bg-white/60 p-10 text-center">
               <p className="text-2xl text-ink">Nothing here yet — and that's fine.</p>

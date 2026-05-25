@@ -26,7 +26,7 @@ export function InsightCard({
   return (
     <article
       id={`insight-${insight.id}`}
-      className="group relative flex flex-col gap-5 rounded-[var(--radius-card)] border border-line bg-white/80 p-6 shadow-[var(--shadow-card)] backdrop-blur-sm transition hover:shadow-[var(--shadow-card-hover)] md:p-8"
+      className="group relative flex flex-col gap-4 rounded-[var(--radius-card)] border border-line bg-white/80 p-4 shadow-[var(--shadow-card)] backdrop-blur-sm transition hover:shadow-[var(--shadow-card-hover)] md:gap-5 md:p-8"
     >
       {/* Header — badge row + headline. */}
       <header className="flex flex-col gap-3">
@@ -35,8 +35,12 @@ export function InsightCard({
           <EvidenceMeter level={insight.evidence} />
         </div>
         <h3
-          className="font-display text-[1.6rem] leading-[1.2] text-ink md:text-[1.85rem]"
-          style={{ fontFamily: "var(--font-display)" }}
+          className="font-display text-[1.3rem] leading-[1.2] text-ink md:text-[1.85rem]"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(1.25rem, 4vw, 1.85rem)",
+            textWrap: "balance",
+          }}
         >
           {insight.title}
         </h3>

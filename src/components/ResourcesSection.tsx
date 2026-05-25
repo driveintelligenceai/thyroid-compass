@@ -85,10 +85,37 @@ function LabsPanel() {
   return (
     <section className="space-y-4">
       <p className="max-w-2xl text-ink-soft">
-        Bring your last lab results, scroll down this table, and translate them into plain words.
-        Numbers are typical lab ranges — yours may differ slightly.
+        Bring your last lab results, find each test below, and translate the numbers into plain words.
+        Ranges are typical — yours may differ slightly.
       </p>
-      <div className="overflow-x-auto rounded-[var(--radius-card)] border border-line bg-white/85 shadow-[var(--shadow-card)]">
+
+      {/* Mobile: card layout. Desktop: table. */}
+      <ul className="grid gap-3 md:hidden">
+        {decodeYourLabs.map((row) => (
+          <li
+            key={row.id}
+            className="rounded-2xl border border-line bg-white/85 p-4 shadow-sm"
+          >
+            <p className="font-display text-lg font-semibold text-ink">{row.test}</p>
+            <dl className="mt-3 space-y-2.5 text-[15px]">
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-ink-muted">What it measures</dt>
+                <dd className="mt-0.5 text-ink-soft">{row.whatItMeasures}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Typical range</dt>
+                <dd className="mt-0.5 text-ink-soft">{row.typicalRange}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-ink-muted">What it means for you</dt>
+                <dd className="mt-0.5 text-ink">{row.whatItMeansForYou}</dd>
+              </div>
+            </dl>
+          </li>
+        ))}
+      </ul>
+
+      <div className="hidden overflow-x-auto rounded-[var(--radius-card)] border border-line bg-white/85 shadow-[var(--shadow-card)] md:block">
         <table className="w-full min-w-[640px] text-left text-[15px]">
           <thead className="bg-parchment-2/60 text-xs font-semibold uppercase tracking-wide text-ink-muted">
             <tr>
@@ -166,12 +193,12 @@ function InteractionsPanel() {
         {interactions.map((it) => (
           <li
             key={it.id}
-            className="rounded-2xl border border-line bg-white/85 p-5 shadow-sm md:flex md:items-start md:gap-6"
+            className="rounded-2xl border border-line bg-white/85 p-4 shadow-sm md:flex md:items-start md:gap-6 md:p-5"
           >
             <div className="md:w-1/4">
               <p className="font-semibold text-ink">{it.what}</p>
             </div>
-            <div className="md:flex-1">
+            <div className="mt-2 md:mt-0 md:flex-1">
               <p className="text-[15px] leading-relaxed text-ink-soft">
                 <span className="font-semibold text-ink">Effect: </span>
                 {it.effect}

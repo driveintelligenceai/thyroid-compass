@@ -33,7 +33,7 @@ export function SafetyNet() {
   return (
     <section
       aria-labelledby="safety-net"
-      className="rounded-[var(--radius-card)] border border-amber-300/40 bg-amber-50/40 p-6 shadow-[var(--shadow-card)] md:p-7"
+      className="rounded-[var(--radius-card)] border border-amber-300/40 bg-amber-50/40 p-4 shadow-[var(--shadow-card)] md:p-7"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
         Safety net

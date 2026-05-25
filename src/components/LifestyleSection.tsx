@@ -106,7 +106,7 @@ export function LifestyleTabContent() {
 function LifestyleCard({ item }: { item: LifestyleItem }) {
   const [open, setOpen] = useState(false);
   return (
-    <li className="rounded-[var(--radius-card)] border border-line bg-white/80 p-6 shadow-[var(--shadow-card)] md:p-7">
+    <li className="rounded-[var(--radius-card)] border border-line bg-white/80 p-4 shadow-[var(--shadow-card)] md:p-7">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h4
           className="font-display text-xl leading-snug text-ink md:text-2xl"
