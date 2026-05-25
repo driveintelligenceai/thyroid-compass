@@ -1,5 +1,10 @@
 node_modules/
 .env
 .env.local
+.env.*.local
 dist/
 .DS_Store
+.vercel/
+.vercel
+*.log
+*.tsbuildinfo
