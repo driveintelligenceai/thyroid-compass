@@ -1,7 +1,7 @@
 {
   "name": "thyroid-compass",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Thyroid Compass — a calm, visual dashboard turning the Hashimoto's / hypothyroidism landscape into Insight → Action → Explore. Educational only; not medical advice.",
   "scripts": {

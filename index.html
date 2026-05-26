@@ -29,6 +29,59 @@
       rel="stylesheet"
     />
     <title>Thyroid Compass — a calm guide to your options</title>
+
+    <!-- Structured data: MedicalWebPage + Article for AI search engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "Thyroid Compass",
+      "url": "https://thyroid-compass.vercel.app/",
+      "description": "A calm, visual educational guide to Hashimoto's thyroiditis and hypothyroidism — treatments, daily care, risks, and research. Educational only, not medical advice.",
+      "inLanguage": "en",
+      "audience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patient"
+      },
+      "about": [
+        {
+          "@type": "MedicalCondition",
+          "name": "Hashimoto's thyroiditis",
+          "alternateName": "Chronic lymphocytic thyroiditis",
+          "code": {
+            "@type": "MedicalCode",
+            "code": "E06.3",
+            "codingSystem": "ICD-10"
+          }
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "Hypothyroidism",
+          "code": {
+            "@type": "MedicalCode",
+            "code": "E03.9",
+            "codingSystem": "ICD-10"
+          }
+        }
+      ],
+      "lastReviewed": "2026-05-26",
+      "specialty": "Endocrinology",
+      "isAccessibleForFree": true,
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Thyroid Compass",
+        "url": "https://thyroid-compass.vercel.app/"
+      },
+      "mainContentOfPage": {
+        "@type": "WebPageElement",
+        "isPartOf": {
+          "@type": "WebPage",
+          "name": "Thyroid Compass"
+        }
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Allow AI crawlers — this content is educational and we want it findable
+# by AI search tools (Perplexity, ChatGPT browse, Claude, Gemini, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://thyroid-compass.vercel.app/sitemap.xml
